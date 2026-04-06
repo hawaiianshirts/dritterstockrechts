@@ -15,10 +15,10 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 #lang-toggle button.active,#lang-toggle button:hover{background:rgba(160,190,255,0.14);border-color:rgba(200,220,255,0.9);color:#fff}
 #hero{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse 90% 70% at 50% 50%,#0025e0 0%,#0010b5 45%,#000888 100%)}
 #hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 35%,rgba(0,0,40,0.75) 100%);pointer-events:none;z-index:1}
-.fig-wrap{position:absolute;top:50%;transform:translateY(-50%);z-index:3}
+.fig-wrap{position:absolute;top:50%;transform:translateY(-50%);z-index:3;pointer-events:none}
 .fig-wrap.left{left:2vw}
 .fig-wrap.right{right:2vw}
-.fig-wrap canvas{width:clamp(110px,15vw,200px);display:block;filter:drop-shadow(0 0 10px rgba(100,140,255,0.3))}
+.fig-wrap img{width:clamp(110px,15vw,200px);display:block;mix-blend-mode:screen}
 #center-text{position:relative;z-index:4;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;pointer-events:none;user-select:none;padding:0 220px}
 #brand-name{font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:clamp(20px,3.8vw,54px);color:#fff;letter-spacing:8px;text-transform:uppercase;-webkit-text-stroke:1px rgba(255,255,255,0.25);text-shadow:0 0 8px rgba(110,155,255,0.95),0 0 28px rgba(60,105,255,0.65),0 0 55px rgba(30,65,200,0.45),4px 4px 0 rgba(0,0,90,0.85);animation:brandFlicker 0.09s step-end infinite,brandGlitch 8s step-end infinite}
 @keyframes brandFlicker{0%,93%,100%{opacity:1}94%{opacity:0.8}96%{opacity:0.95}}
@@ -77,91 +77,91 @@ body.lang-en .en.g{display:grid}
 </style>
 </head>
 <body class="lang-de">
-
+ 
 <div id="lang-toggle">
   <button id="btn-de" class="active" onclick="setLang('de')">DE</button>
   <button id="btn-en" onclick="setLang('en')">EN</button>
 </div>
-
+ 
 <section id="hero">
   <div class="fig-wrap left">
-    <img src="man.gif" style="width:clamp(110px,15vw,200px);display:block;mix-blend-mode:screen;pointer-events:none;">
+    <img src="man.gif" alt="">
   </div>
   <div class="fig-wrap right">
-    <img src="man.gif" style="width:clamp(110px,15vw,200px);display:block;mix-blend-mode:screen;transform:scaleX(-1);">
+    <img src="man.gif" alt="" style="transform:scaleX(-1)">
   </div>
   <div id="center-text">
     <div id="brand-name">dritterstockrechts</div>
     <div id="slogan"><span id="slogan-text">KOMMST DU NICHT MEHR WEITER IM LEBEN?</span></div>
-    <div class="scroll-hint">▼ &nbsp; scroll &nbsp; ▼</div>
+    <div class="scroll-hint">&#9660; &nbsp; scroll &nbsp; &#9660;</div>
   </div>
 </section>
-
+ 
 <section id="disclaimer">
   <div class="section">
     <div class="disc-box de body-text">
       <p>Ich bin <strong>kein Therapeut</strong>, kein Arzt und kein Heilpraktiker. Ich stelle keine Diagnosen, behandle keine psychischen Erkrankungen und ersetze keine professionelle medizinische Versorgung.</p>
-      <p>Was ich anbiete, nennt sich <strong>Coaching</strong> und <strong>Gesprächsbegleitung</strong> – ein ruhiger Raum, eine aufmerksame Gegenwart, ein Gespräch ohne Uhr und ohne Urteil.</p>
-      <p>Wenn du das Gefühl hast, dass du professionelle therapeutische Unterstützung brauchst, sage ich dir das offen – und helfe dir, die richtige Anlaufstelle zu finden.</p>
+      <p>Was ich anbiete, nennt sich <strong>Coaching</strong> und <strong>Gespraechsbegleitung</strong> - ein ruhiger Raum, eine aufmerksame Gegenwart, ein Gespraech ohne Uhr und ohne Urteil.</p>
+      <p>Wenn du das Gefuehl hast, dass du professionelle therapeutische Unterstuetzung brauchst, sage ich dir das offen - und helfe dir, die richtige Anlaufstelle zu finden.</p>
     </div>
     <div class="disc-box en body-text">
-      <p>I am <strong>not a therapist</strong>, not a doctor, not a licensed practitioner. I don't diagnose, I don't treat, and I don't replace professional mental health care.</p>
-      <p>What I offer is called <strong>coaching</strong> and <strong>conversational guidance</strong> – a quiet space, an attentive presence, a conversation without a clock or a verdict.</p>
-      <p>If I sense that you need professional therapeutic support, I'll tell you directly – and help you find the right place.</p>
+      <p>I am <strong>not a therapist</strong>, not a doctor, not a licensed practitioner. I do not diagnose, I do not treat, and I do not replace professional mental health care.</p>
+      <p>What I offer is called <strong>coaching</strong> and <strong>conversational guidance</strong> - a quiet space, an attentive presence, a conversation without a clock or a verdict.</p>
+      <p>If I sense that you need professional therapeutic support, I will tell you directly - and help you find the right place.</p>
     </div>
   </div>
 </section>
-
+ 
 <section id="offer">
   <div class="section">
     <div class="de">
       <h2 class="sec-title">Was ich anbiete</h2>
-      <div class="offer-intro body-text"><p>Ich bin <strong>kein Therapeut</strong> – das sage ich klar. Was ich anbiete, heißt <strong>Coaching</strong> und <strong>Gesprächsbegleitung</strong>. Kein Wartezimmer. Keine Krankenkasse. Kein System.</p></div>
+      <div class="offer-intro body-text"><p>Ich bin <strong>kein Therapeut</strong> - das sage ich klar. Was ich anbiete, heisst <strong>Coaching</strong> und <strong>Gespraechsbegleitung</strong>. Kein Wartezimmer. Keine Krankenkasse. Kein System.</p></div>
       <div class="offer-grid g">
-        <div class="offer-card"><h3>Coaching</h3><p>Du weißt, dass sich etwas ändern muss – aber nicht wie. Gemeinsam finden wir Ziele, Wege und den nötigen Antrieb.</p></div>
-        <div class="offer-card"><h3>Gesprächsbegleitung</h3><p>Kein Rezept, kein Urteil. Ein offenes, ehrliches Gespräch – so oft und so lange du es brauchst.</p></div>
-        <div class="offer-card"><h3>Lebensberatung</h3><p>Wenn der Alltag aus dem Ruder läuft oder du nicht mehr weißt, wo es langgeht.</p></div>
-        <div class="offer-card"><h3>Reflexionsraum</h3><p>Gedanken sortieren, Muster erkennen, sich selbst besser verstehen. Auf Augenhöhe.</p></div>
-        <div class="offer-card"><h3>Krisenbegleitung</h3><p>Für schwierige Phasen – kein Ersatz für professionelle Hilfe, aber ein Anker.</p></div>
-        <div class="offer-card"><h3>Motivationsarbeit</h3><p>Wenn der Antrieb weg ist und man immer wieder gegen dieselbe Wand läuft.</p></div>
+        <div class="offer-card"><h3>Coaching</h3><p>Du weisst, dass sich etwas aendern muss - aber nicht wie. Gemeinsam finden wir Ziele, Wege und den noetigen Antrieb.</p></div>
+        <div class="offer-card"><h3>Gespraechsbegleitung</h3><p>Kein Rezept, kein Urteil. Ein offenes, ehrliches Gespraech - so oft und so lange du es brauchst.</p></div>
+        <div class="offer-card"><h3>Lebensberatung</h3><p>Wenn der Alltag aus dem Ruder laeuft oder du nicht mehr weisst, wo es langgeht.</p></div>
+        <div class="offer-card"><h3>Reflexionsraum</h3><p>Gedanken sortieren, Muster erkennen, sich selbst besser verstehen. Auf Augenhoehe.</p></div>
+        <div class="offer-card"><h3>Krisenbegleitung</h3><p>Fuer schwierige Phasen - kein Ersatz fuer professionelle Hilfe, aber ein Anker.</p></div>
+        <div class="offer-card"><h3>Motivationsarbeit</h3><p>Wenn der Antrieb weg ist und man immer wieder gegen dieselbe Wand laeuft.</p></div>
       </div>
     </div>
     <div class="en">
       <h2 class="sec-title">What I offer</h2>
-      <div class="offer-intro body-text"><p>I'm <strong>not a therapist</strong> – I'll say that plainly. What I offer is <strong>coaching</strong> and <strong>conversational guidance</strong>. No waiting list. No insurance. No system.</p></div>
+      <div class="offer-intro body-text"><p>I am <strong>not a therapist</strong> - I will say that plainly. What I offer is <strong>coaching</strong> and <strong>conversational guidance</strong>. No waiting list. No insurance. No system.</p></div>
       <div class="offer-grid g">
-        <div class="offer-card"><h3>Coaching</h3><p>You know something needs to change – but not how. Together we find goals, paths, and the drive.</p></div>
-        <div class="offer-card"><h3>Conversational Guidance</h3><p>No prescription, no judgment. An open, honest conversation – as long as you need.</p></div>
-        <div class="offer-card"><h3>Life Counselling</h3><p>When everyday life gets out of hand or you've lost your direction.</p></div>
+        <div class="offer-card"><h3>Coaching</h3><p>You know something needs to change - but not how. Together we find goals, paths, and the drive.</p></div>
+        <div class="offer-card"><h3>Conversational Guidance</h3><p>No prescription, no judgment. An open, honest conversation - as long as you need.</p></div>
+        <div class="offer-card"><h3>Life Counselling</h3><p>When everyday life gets out of hand or you have lost your direction.</p></div>
         <div class="offer-card"><h3>Reflection Space</h3><p>Sort thoughts, recognise patterns, understand yourself better.</p></div>
-        <div class="offer-card"><h3>Crisis Support</h3><p>For tough phases – not a replacement for professional help, but an anchor.</p></div>
+        <div class="offer-card"><h3>Crisis Support</h3><p>For tough phases - not a replacement for professional help, but an anchor.</p></div>
         <div class="offer-card"><h3>Motivation Work</h3><p>When drive has disappeared and you keep hitting the same wall.</p></div>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <section id="about">
   <div class="section">
     <div class="de">
-      <h2 class="sec-title">Über mich</h2>
+      <h2 class="sec-title">Ueber mich</h2>
       <div class="about-box body-text">
-        <p>Ich bin in Berlin ansässig, aufgewachsen zwischen zwei Kulturen und <strong>englischer Muttersprachler</strong>. Wenn du dich auf Englisch besser ausdrücken kannst – dann machen wir das.</p>
-        <p>Ich kenne die Denkweise und die unausgesprochenen Erwartungen, die amerikanische Klienten mitbringen. <strong>Ich stelle mich vollständig darauf ein.</strong> Kein gebrochenes Englisch – einfach ein Gespräch, das sich natürlich anfühlt.</p>
+        <p>Ich bin in Berlin ansaessig, aufgewachsen zwischen zwei Kulturen und <strong>englischer Muttersprachler</strong>. Wenn du dich auf Englisch besser ausdruecken kannst - dann machen wir das.</p>
+        <p>Ich kenne die Denkweise und die unausgesprochenen Erwartungen, die amerikanische Klienten mitbringen. <strong>Ich stelle mich vollstaendig darauf ein.</strong> Kein gebrochenes Englisch - einfach ein Gespraech, das sich natuerlich anfuehlt.</p>
         <p>Meine Klienten kommen aus Berlin, aus den USA und aus dem englischsprachigen Raum. Alle sind willkommen.</p>
       </div>
     </div>
     <div class="en">
       <h2 class="sec-title">About me</h2>
       <div class="about-box body-text">
-        <p>I'm based in Berlin and a <strong>native English speaker</strong>. If English is where you feel most like yourself – that's exactly how we'll talk.</p>
-        <p>I understand the mindset and the unspoken expectations that American clients bring. <strong>I adapt fully.</strong> No cultural static – just a conversation that feels natural.</p>
+        <p>I am based in Berlin and a <strong>native English speaker</strong>. If English is where you feel most like yourself - that is exactly how we will talk.</p>
+        <p>I understand the mindset and the unspoken expectations that American clients bring. <strong>I adapt fully.</strong> No cultural static - just a conversation that feels natural.</p>
         <p>My clients come from Berlin, from the US, and from across the English-speaking world. Everyone is welcome.</p>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <section id="contact">
   <div class="section">
     <div class="de">
@@ -172,8 +172,8 @@ body.lang-en .en.g{display:grid}
           <div class="form-field"><label>Name</label><input type="text" name="name" placeholder="dein name"></div>
           <div class="form-field"><label>E-Mail</label><input type="email" name="email" placeholder="deine@mail.de"></div>
         </div>
-        <div class="form-field"><label>Nachricht</label><textarea name="nachricht" placeholder="was beschäftigt dich gerade?"></textarea></div>
-        <button type="submit" class="submit-btn">Senden ▶</button>
+        <div class="form-field"><label>Nachricht</label><textarea name="nachricht" placeholder="was beschaeftigt dich gerade?"></textarea></div>
+        <button type="submit" class="submit-btn">Senden</button>
       </form>
     </div>
     <div class="en">
@@ -184,72 +184,71 @@ body.lang-en .en.g{display:grid}
           <div class="form-field"><label>Name</label><input type="text" name="name" placeholder="your name"></div>
           <div class="form-field"><label>E-Mail</label><input type="email" name="email" placeholder="your@mail.com"></div>
         </div>
-        <div class="form-field"><label>Message</label><textarea name="message" placeholder="what's on your mind?"></textarea></div>
-        <button type="submit" class="submit-btn">Send ▶</button>
+        <div class="form-field"><label>Message</label><textarea name="message" placeholder="what is on your mind?"></textarea></div>
+        <button type="submit" class="submit-btn">Send</button>
       </form>
     </div>
   </div>
 </section>
-
+ 
 <section id="impressum">
   <div class="section">
     <div class="de">
       <h2 class="sec-title">Impressum</h2>
       <div class="body-text impressum-box">
-        <p><strong>Angaben gemäß § 5 TMG</strong></p>
+        <p><strong>Angaben gem. Par. 5 TMG</strong></p>
         <p>Konstantin Kuse<br>dritterstockrechts<br><span style="color:rgba(180,200,255,0.5);font-size:13px;">[Adresse folgt]</span></p>
-        <p><strong>Kontakt</strong><br>E-Mail: <a href="/cdn-cgi/l/email-protection#e09485818da08492899494859293948f838b928583889493ce838f8d"><span class="__cf_email__" data-cfemail="7f0b1a1e123f1b0d160b0b1a0d0c0b101c140d1a1c170b0c511c1012">[email&#160;protected]</span></a></p>
-        <p><strong>Hinweis</strong><br>Coaching und Gesprächsbegleitung. Kein Heilberuf. Keine Diagnose oder Behandlung psychischer Erkrankungen.</p>
+        <p><strong>Kontakt</strong><br>E-Mail: <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a></p>
+        <p><strong>Hinweis</strong><br>Coaching und Gespraechsbegleitung. Kein Heilberuf. Keine Diagnose oder Behandlung psychischer Erkrankungen.</p>
         <p><strong>Streitschlichtung</strong><br>EU-Plattform: <a href="https://ec.europa.eu/consumers/odr" target="_blank">ec.europa.eu/consumers/odr</a>. Wir nehmen nicht teil.</p>
       </div>
     </div>
     <div class="en">
       <h2 class="sec-title">Legal Notice</h2>
       <div class="body-text impressum-box">
-        <p><strong>Information pursuant to § 5 TMG</strong></p>
+        <p><strong>Information pursuant to Par. 5 TMG</strong></p>
         <p>Konstantin Kuse<br>dritterstockrechts<br><span style="color:rgba(180,200,255,0.5);font-size:13px;">[Address to follow]</span></p>
-        <p><strong>Contact</strong><br>Email: <a href="/cdn-cgi/l/email-protection#e99d8c8884a98d9b809d9d8c9b9a9d868a829b8c8a819d9ac78a8684"><span class="__cf_email__" data-cfemail="285c4d4945684c5a415c5c4d5a5b5c474b435a4d4b405c5b064b4745">[email&#160;protected]</span></a></p>
+        <p><strong>Contact</strong><br>Email: <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a></p>
         <p><strong>Note</strong><br>Coaching and conversational guidance. Not a licensed health profession. No diagnosis or treatment.</p>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <footer>
   <p>
-    dritterstockrechts &nbsp;·&nbsp; Berlin<br>
-    <a href="#impressum">Impressum</a> &nbsp;·&nbsp;
-    <a href="/cdn-cgi/l/email-protection#097d6c6864496d7b607d7d6c7b7a7d666a627b6c6a617d7a276a6664"><span class="__cf_email__" data-cfemail="7b0f1e1a163b1f09120f0f1e09080f141810091e18130f0855181416">[email&#160;protected]</span></a><br><br>
+    dritterstockrechts &nbsp;&#183;&nbsp; Berlin<br>
+    <a href="#impressum">Impressum</a> &nbsp;&#183;&nbsp;
+    <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a><br><br>
     <span style="font-size:10px;opacity:0.38;">Kein therapeutisches Angebot. Keine Heilbehandlung. Keine Diagnosen.</span>
   </p>
 </footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const slogansDE = [
+ 
+<script>
+var slogansDE = [
   "KOMMST DU NICHT MEHR WEITER IM LEBEN?",
   "BIST DU IN EINE SCHIEFLAGE GERATEN?",
-  "MÖCHTEST DU ENDLICH WEITERKOMMEN?",
+  "MOECHTEST DU ENDLICH WEITERKOMMEN?",
   "STECKST DU GERADE FEST?",
-  "LÄUFT ES NICHT SO RUND?",
+  "LAEUFT ES NICHT SO RUND?",
   "AUF DER STELLE TRETEN?",
   "BRAUCHST DU EINEN NEUSTART?",
-  "FÜHLST DU DICH VERLOREN?",
+  "FUEHLST DU DICH VERLOREN?",
   "IST DER ALLTAG ZUR LAST GEWORDEN?",
-  "WEISST DU NICHT, WO ES LANGGEHT?",
+  "WEISST DU NICHT WO ES LANGGEHT?",
   "HAT DAS LEBEN SEINE RICHTUNG VERLOREN?",
-  "BRAUCHST DU JEMANDEN, DER ZUHÖRT?",
-  "WILLST DU ENDLICH ETWAS VERÄNDERN?",
-  "FÜHLST DU DICH ALLEIN MIT DEINEN GEDANKEN?",
+  "BRAUCHST DU JEMANDEN DER ZUHOERT?",
+  "WILLST DU ENDLICH ETWAS VERAENDERN?",
+  "FUEHLST DU DICH ALLEIN MIT DEINEN GEDANKEN?",
   "IST DEIN KOPF GERADE VOLL?",
   "SUCHST DU NACH ORIENTIERUNG?",
   "BRAUCHST DU EINEN KICK-START?",
   "HAT DIE MOTIVATION DICH VERLASSEN?",
   "IMMER WIEDER GEGEN DIESELBE WAND?",
-  "WILLST DU DICH WIEDER LEICHT FÜHLEN?",
-  "TRAUST DU DIR SELBST NICHT MEHR?",
-  "IST DA DIESES GEFÜHL, DASS ETWAS NICHT STIMMT?"
+  "WILLST DU DICH WIEDER LEICHT FUEHLEN?",
+  "TRAUST DU DIR SELBST NICHT MEHR?"
 ];
-const slogansEN = [
+var slogansEN = [
   "FEELING STUCK IN LIFE?",
   "THINGS NOT GOING AS PLANNED?",
   "NEED A FRESH START?",
@@ -261,7 +260,6 @@ const slogansEN = [
   "IS YOUR HEAD FULL AND HEAVY?",
   "LOOKING FOR CLARITY?",
   "NEED A KICK-START?",
-  "FEEL LIKE YOU'VE LOST YOURSELF?",
   "MOTIVATION GONE MISSING?",
   "TIRED OF HITTING THE SAME WALL?",
   "WANT TO FEEL LIGHT AGAIN?",
@@ -270,61 +268,64 @@ const slogansEN = [
   "IS EVERYDAY LIFE WEIGHING YOU DOWN?",
   "READY FOR SOMETHING TO CHANGE?"
 ];
-
-let idx = 0;
-let lang = 'de';
-
+ 
+var idx = 0;
+var lang = "de";
+ 
 function rotate() {
-  const el = document.getElementById('slogan-text');
-  const arr = lang === 'de' ? slogansDE : slogansEN;
-  el.style.opacity = '0';
+  var el = document.getElementById("slogan-text");
+  var arr = lang === "de" ? slogansDE : slogansEN;
+  el.style.opacity = "0";
   setTimeout(function() {
     idx = (idx + 1) % arr.length;
     el.textContent = arr[idx];
-    el.style.opacity = '1';
+    el.style.opacity = "1";
   }, 500);
 }
-
+ 
 function setLang(l) {
   lang = l;
-  document.body.className = 'lang-' + l;
-  document.getElementById('btn-de').classList.toggle('active', l==='de');
-  document.getElementById('btn-en').classList.toggle('active', l==='en');
-  document.querySelectorAll('.de').forEach(function(el) {
-    el.style.display = l === 'de' ? '' : 'none';
-  });
-  document.querySelectorAll('.en').forEach(function(el) {
-    el.style.display = l === 'en' ? '' : 'none';
-  });
-  var el = document.getElementById('slogan-text');
-  if (el) el.textContent = (l==='de' ? slogansDE : slogansEN)[idx];
+  document.body.className = "lang-" + l;
+  document.getElementById("btn-de").classList.toggle("active", l === "de");
+  document.getElementById("btn-en").classList.toggle("active", l === "en");
+  var des = document.querySelectorAll(".de");
+  for (var i = 0; i < des.length; i++) {
+    des[i].style.display = l === "de" ? "" : "none";
+  }
+  var ens = document.querySelectorAll(".en");
+  for (var i = 0; i < ens.length; i++) {
+    ens[i].style.display = l === "en" ? "" : "none";
+  }
+  var el = document.getElementById("slogan-text");
+  if (el) { el.textContent = (l === "de" ? slogansDE : slogansEN)[idx]; }
 }
-
+ 
 function handleSubmit(e, l) {
   e.preventDefault();
   var form = e.target;
-  var btn = form.querySelector('.submit-btn');
+  var btn = form.querySelector(".submit-btn");
   var formData = new FormData(form);
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(formData).toString()
-  })
-  .then(function() {
-    btn.textContent = l==='de' ? 'Gesendet ✓' : 'Sent ✓';
-    btn.style.borderColor = 'rgba(140,255,140,0.6)';
-    btn.style.color = 'rgba(170,255,170,0.9)';
+  }).then(function() {
+    btn.textContent = l === "de" ? "Gesendet" : "Sent";
+    btn.style.borderColor = "rgba(140,255,140,0.6)";
+    btn.style.color = "rgba(170,255,170,0.9)";
     form.reset();
     setTimeout(function() {
-      btn.textContent = l==='de' ? 'Senden ▶' : 'Send ▶';
-      btn.style.borderColor = '';
-      btn.style.color = '';
+      btn.textContent = l === "de" ? "Senden" : "Send";
+      btn.style.borderColor = "";
+      btn.style.color = "";
     }, 3000);
-  })
-  .catch(function(err) { console.error(err); });
+  }).catch(function(err) { console.error(err); });
 }
-
-// Load figure
-var figImg = new Image();
-figImg.onload = function() {
-  var L = document.getElementById('canvas-
+ 
+window.addEventListener("DOMContentLoaded", function() {
+  setLang("de");
+  setInterval(rotate, 3200);
+});
+</script>
+</body>
+</html>
