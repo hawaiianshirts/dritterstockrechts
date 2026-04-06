@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dritterstockrechts</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0009b8;color:#e8eeff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(0,0,50,0.18) 3px,rgba(0,0,50,0.18) 4px);pointer-events:none;z-index:9999;animation:scanroll 14s linear infinite}
+@keyframes scanroll{from{background-position:0 0}to{background-position:0 200px}}
+#lang-toggle{position:fixed;top:16px;right:20px;z-index:1000;display:flex;gap:6px}
+#lang-toggle button{background:transparent;border:2px solid rgba(160,190,255,0.45);color:rgba(180,205,255,0.65);font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:10px;padding:5px 11px;cursor:pointer;letter-spacing:1px;transition:all 0.15s}
+#lang-toggle button.active,#lang-toggle button:hover{background:rgba(160,190,255,0.14);border-color:rgba(200,220,255,0.9);color:#fff}
+#hero{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse 90% 70% at 50% 50%,#0025e0 0%,#0010b5 45%,#000888 100%)}
+#hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 35%,rgba(0,0,40,0.75) 100%);pointer-events:none;z-index:1}
+.fig-wrap{position:absolute;top:50%;transform:translateY(-50%);z-index:3}
+.fig-wrap.left{left:2vw}
+.fig-wrap.right{right:2vw}
+.fig-wrap canvas{width:clamp(110px,15vw,200px);display:block;filter:drop-shadow(0 0 10px rgba(100,140,255,0.3))}
+#center-text{position:relative;z-index:4;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;pointer-events:none;user-select:none;padding:0 220px}
+#brand-name{font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:clamp(20px,3.8vw,54px);color:#fff;letter-spacing:8px;text-transform:uppercase;-webkit-text-stroke:1px rgba(255,255,255,0.25);text-shadow:0 0 8px rgba(110,155,255,0.95),0 0 28px rgba(60,105,255,0.65),0 0 55px rgba(30,65,200,0.45),4px 4px 0 rgba(0,0,90,0.85);animation:brandFlicker 0.09s step-end infinite,brandGlitch 8s step-end infinite}
+@keyframes brandFlicker{0%,93%,100%{opacity:1}94%{opacity:0.8}96%{opacity:0.95}}
+@keyframes brandGlitch{0%,88%,100%{transform:translateX(0)}89%{transform:translateX(4px)}90%{transform:translateX(-5px)}91%{transform:translateX(2px)}92%{transform:translateX(0)}}
+#slogan{font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:clamp(10px,1.3vw,16px);color:rgba(220,230,255,0.95);letter-spacing:3px;line-height:1.8;text-transform:uppercase;text-shadow:0 0 14px rgba(80,125,255,0.55);min-height:2em}
+#slogan-text{transition:opacity 0.5s ease;display:inline-block}
+.scroll-hint{font-size:11px;color:rgba(150,180,255,0.38);letter-spacing:4px;animation:bounce 2.6s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0);opacity:0.38}50%{transform:translateY(8px);opacity:0.65}}
+.section{max-width:730px;margin:0 auto;padding:74px 30px}
+.sec-title{font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:clamp(12px,1.9vw,19px);color:#fff;letter-spacing:2px;text-transform:uppercase;margin-bottom:30px;border-left:3px solid rgba(130,165,255,0.7);padding-left:14px}
+.body-text{font-size:15px;line-height:1.95;color:rgba(200,215,255,0.87)}
+.body-text strong{color:#fff}
+.body-text p{margin-bottom:14px}
+.body-text p:last-child{margin-bottom:0}
+#disclaimer{background:linear-gradient(180deg,#0009ac 0%,#00088e 100%);border-top:1px solid rgba(110,150,255,0.22);border-bottom:1px solid rgba(110,150,255,0.22)}
+.disc-box{border:1px solid rgba(120,160,255,0.28);padding:32px 36px;background:rgba(0,0,60,0.42)}
+#offer{background:#00088e}
+.offer-intro{margin-bottom:28px;font-size:16px;line-height:2;border-left:3px solid rgba(130,165,255,0.5);padding-left:18px}
+.offer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+@media(max-width:800px){.offer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.offer-grid{grid-template-columns:1fr}}
+.offer-card{border:1px solid rgba(100,150,255,0.22);padding:22px 20px;background:rgba(0,0,70,0.38);transition:border-color .25s,background .25s}
+.offer-card:hover{border-color:rgba(155,195,255,0.6);background:rgba(0,0,92,0.52)}
+.offer-card h3{font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:11px;color:rgba(185,215,255,0.88);margin-bottom:10px;letter-spacing:2px;text-transform:uppercase}
+.offer-card p{font-size:14px;line-height:1.82;color:rgba(190,212,255,0.78)}
+#about{background:linear-gradient(180deg,#00088e 0%,#000780 100%);border-top:1px solid rgba(110,150,255,0.2)}
+.about-box{border-left:3px solid rgba(130,165,255,0.5);padding-left:28px;max-width:580px}
+.about-box p{margin-bottom:16px}
+.about-box p:last-child{margin-bottom:0}
+#contact{background:linear-gradient(180deg,#000780 0%,#000668 100%);border-top:1px solid rgba(110,148,255,0.18)}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:580px){.form-row{grid-template-columns:1fr}}
+.form-field{display:flex;flex-direction:column;gap:5px}
+.form-field label{font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:10px;color:rgba(140,170,220,0.68);letter-spacing:2px;text-transform:uppercase}
+.form-field input,.form-field textarea{background:rgba(0,0,60,0.52);border:1px solid rgba(100,140,255,0.28);color:#fff;font-size:14px;padding:11px 13px;outline:none;transition:border-color .2s;resize:none}
+.form-field input:focus,.form-field textarea:focus{border-color:rgba(165,205,255,0.8)}
+.form-field textarea{min-height:110px}
+::placeholder{color:rgba(120,150,200,0.38)}
+.submit-btn{align-self:flex-start;background:transparent;border:2px solid rgba(185,215,255,0.58);color:rgba(185,215,255,0.88);font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:11px;padding:13px 30px;cursor:pointer;letter-spacing:3px;text-transform:uppercase;margin-top:6px;transition:all .2s}
+.submit-btn:hover{background:rgba(185,215,255,0.1);border-color:#fff;color:#fff}
+#impressum{background:#000455;border-top:1px solid rgba(100,140,255,0.15)}
+.impressum-box p{margin-bottom:20px;font-size:14px;line-height:1.9}
+.impressum-box p:last-child{margin-bottom:0}
+.impressum-box a{color:rgba(160,190,255,0.8);text-decoration:none}
+.impressum-box a:hover{color:#fff}
+footer{background:#000345;border-top:1px solid rgba(100,140,255,0.14);padding:28px 32px;text-align:center}
+footer p{font-size:11px;color:rgba(130,160,210,0.48);letter-spacing:1px;line-height:2.1}
+footer a{color:rgba(150,180,220,0.62);text-decoration:none}
+footer a:hover{color:rgba(185,215,255,0.88)}
+.de,.en{display:none}
+body.lang-de .de{display:block}
+body.lang-en .en{display:block}
+body.lang-de .de.g{display:grid}
+body.lang-en .en.g{display:grid}
+</style>
+</head>
+<body class="lang-de">
+
+<div id="lang-toggle">
+  <button id="btn-de" class="active" onclick="setLang('de')">DE</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<section id="hero">
+  <div class="fig-wrap left">
+    <canvas id="canvas-left" width="150" height="240"></canvas>
+  </div>
+  <div class="fig-wrap right">
+    <canvas id="canvas-right" width="150" height="240" style="transform:scaleX(-1)"></canvas>
+  </div>
+  <div id="center-text">
+    <div id="brand-name">dritterstockrechts</div>
+    <div id="slogan"><span id="slogan-text">KOMMST DU NICHT MEHR WEITER IM LEBEN?</span></div>
+    <div class="scroll-hint">▼ &nbsp; scroll &nbsp; ▼</div>
+  </div>
+</section>
+
+<section id="disclaimer">
+  <div class="section">
+    <div class="disc-box de body-text">
+      <p>Ich bin <strong>kein Therapeut</strong>, kein Arzt und kein Heilpraktiker. Ich stelle keine Diagnosen, behandle keine psychischen Erkrankungen und ersetze keine professionelle medizinische Versorgung.</p>
+      <p>Was ich anbiete, nennt sich <strong>Coaching</strong> und <strong>Gesprächsbegleitung</strong> – ein ruhiger Raum, eine aufmerksame Gegenwart, ein Gespräch ohne Uhr und ohne Urteil.</p>
+      <p>Wenn du das Gefühl hast, dass du professionelle therapeutische Unterstützung brauchst, sage ich dir das offen – und helfe dir, die richtige Anlaufstelle zu finden.</p>
+    </div>
+    <div class="disc-box en body-text">
+      <p>I am <strong>not a therapist</strong>, not a doctor, not a licensed practitioner. I don't diagnose, I don't treat, and I don't replace professional mental health care.</p>
+      <p>What I offer is called <strong>coaching</strong> and <strong>conversational guidance</strong> – a quiet space, an attentive presence, a conversation without a clock or a verdict.</p>
+      <p>If I sense that you need professional therapeutic support, I'll tell you directly – and help you find the right place.</p>
+    </div>
+  </div>
+</section>
+
+<section id="offer">
+  <div class="section">
+    <div class="de">
+      <h2 class="sec-title">Was ich anbiete</h2>
+      <div class="offer-intro body-text"><p>Ich bin <strong>kein Therapeut</strong> – das sage ich klar. Was ich anbiete, heißt <strong>Coaching</strong> und <strong>Gesprächsbegleitung</strong>. Kein Wartezimmer. Keine Krankenkasse. Kein System.</p></div>
+      <div class="offer-grid g">
+        <div class="offer-card"><h3>Coaching</h3><p>Du weißt, dass sich etwas ändern muss – aber nicht wie. Gemeinsam finden wir Ziele, Wege und den nötigen Antrieb.</p></div>
+        <div class="offer-card"><h3>Gesprächsbegleitung</h3><p>Kein Rezept, kein Urteil. Ein offenes, ehrliches Gespräch – so oft und so lange du es brauchst.</p></div>
+        <div class="offer-card"><h3>Lebensberatung</h3><p>Wenn der Alltag aus dem Ruder läuft oder du nicht mehr weißt, wo es langgeht.</p></div>
+        <div class="offer-card"><h3>Reflexionsraum</h3><p>Gedanken sortieren, Muster erkennen, sich selbst besser verstehen. Auf Augenhöhe.</p></div>
+        <div class="offer-card"><h3>Krisenbegleitung</h3><p>Für schwierige Phasen – kein Ersatz für professionelle Hilfe, aber ein Anker.</p></div>
+        <div class="offer-card"><h3>Motivationsarbeit</h3><p>Wenn der Antrieb weg ist und man immer wieder gegen dieselbe Wand läuft.</p></div>
+      </div>
+    </div>
+    <div class="en">
+      <h2 class="sec-title">What I offer</h2>
+      <div class="offer-intro body-text"><p>I'm <strong>not a therapist</strong> – I'll say that plainly. What I offer is <strong>coaching</strong> and <strong>conversational guidance</strong>. No waiting list. No insurance. No system.</p></div>
+      <div class="offer-grid g">
+        <div class="offer-card"><h3>Coaching</h3><p>You know something needs to change – but not how. Together we find goals, paths, and the drive.</p></div>
+        <div class="offer-card"><h3>Conversational Guidance</h3><p>No prescription, no judgment. An open, honest conversation – as long as you need.</p></div>
+        <div class="offer-card"><h3>Life Counselling</h3><p>When everyday life gets out of hand or you've lost your direction.</p></div>
+        <div class="offer-card"><h3>Reflection Space</h3><p>Sort thoughts, recognise patterns, understand yourself better.</p></div>
+        <div class="offer-card"><h3>Crisis Support</h3><p>For tough phases – not a replacement for professional help, but an anchor.</p></div>
+        <div class="offer-card"><h3>Motivation Work</h3><p>When drive has disappeared and you keep hitting the same wall.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section">
+    <div class="de">
+      <h2 class="sec-title">Über mich</h2>
+      <div class="about-box body-text">
+        <p>Ich bin in Berlin ansässig, aufgewachsen zwischen zwei Kulturen und <strong>englischer Muttersprachler</strong>. Wenn du dich auf Englisch besser ausdrücken kannst – dann machen wir das.</p>
+        <p>Ich kenne die Denkweise und die unausgesprochenen Erwartungen, die amerikanische Klienten mitbringen. <strong>Ich stelle mich vollständig darauf ein.</strong> Kein gebrochenes Englisch – einfach ein Gespräch, das sich natürlich anfühlt.</p>
+        <p>Meine Klienten kommen aus Berlin, aus den USA und aus dem englischsprachigen Raum. Alle sind willkommen.</p>
+      </div>
+    </div>
+    <div class="en">
+      <h2 class="sec-title">About me</h2>
+      <div class="about-box body-text">
+        <p>I'm based in Berlin and a <strong>native English speaker</strong>. If English is where you feel most like yourself – that's exactly how we'll talk.</p>
+        <p>I understand the mindset and the unspoken expectations that American clients bring. <strong>I adapt fully.</strong> No cultural static – just a conversation that feels natural.</p>
+        <p>My clients come from Berlin, from the US, and from across the English-speaking world. Everyone is welcome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section">
+    <div class="de">
+      <h2 class="sec-title">Schreib mir</h2>
+      <form class="contact-form" name="kontakt-de" method="POST" data-netlify="true" onsubmit="handleSubmit(event,'de')">
+        <input type="hidden" name="form-name" value="kontakt-de">
+        <div class="form-row">
+          <div class="form-field"><label>Name</label><input type="text" name="name" placeholder="dein name"></div>
+          <div class="form-field"><label>E-Mail</label><input type="email" name="email" placeholder="deine@mail.de"></div>
+        </div>
+        <div class="form-field"><label>Nachricht</label><textarea name="nachricht" placeholder="was beschäftigt dich gerade?"></textarea></div>
+        <button type="submit" class="submit-btn">Senden ▶</button>
+      </form>
+    </div>
+    <div class="en">
+      <h2 class="sec-title">Write to me</h2>
+      <form class="contact-form" name="kontakt-en" method="POST" data-netlify="true" onsubmit="handleSubmit(event,'en')">
+        <input type="hidden" name="form-name" value="kontakt-en">
+        <div class="form-row">
+          <div class="form-field"><label>Name</label><input type="text" name="name" placeholder="your name"></div>
+          <div class="form-field"><label>E-Mail</label><input type="email" name="email" placeholder="your@mail.com"></div>
+        </div>
+        <div class="form-field"><label>Message</label><textarea name="message" placeholder="what's on your mind?"></textarea></div>
+        <button type="submit" class="submit-btn">Send ▶</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="impressum">
+  <div class="section">
+    <div class="de">
+      <h2 class="sec-title">Impressum</h2>
+      <div class="body-text impressum-box">
+        <p><strong>Angaben gemäß § 5 TMG</strong></p>
+        <p>Konstantin Kuse<br>dritterstockrechts<br><span style="color:rgba(180,200,255,0.5);font-size:13px;">[Adresse folgt]</span></p>
+        <p><strong>Kontakt</strong><br>E-Mail: <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a></p>
+        <p><strong>Hinweis</strong><br>Coaching und Gesprächsbegleitung. Kein Heilberuf. Keine Diagnose oder Behandlung psychischer Erkrankungen.</p>
+        <p><strong>Streitschlichtung</strong><br>EU-Plattform: <a href="https://ec.europa.eu/consumers/odr" target="_blank">ec.europa.eu/consumers/odr</a>. Wir nehmen nicht teil.</p>
+      </div>
+    </div>
+    <div class="en">
+      <h2 class="sec-title">Legal Notice</h2>
+      <div class="body-text impressum-box">
+        <p><strong>Information pursuant to § 5 TMG</strong></p>
+        <p>Konstantin Kuse<br>dritterstockrechts<br><span style="color:rgba(180,200,255,0.5);font-size:13px;">[Address to follow]</span></p>
+        <p><strong>Contact</strong><br>Email: <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a></p>
+        <p><strong>Note</strong><br>Coaching and conversational guidance. Not a licensed health profession. No diagnosis or treatment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    dritterstockrechts &nbsp;·&nbsp; Berlin<br>
+    <a href="#impressum">Impressum</a> &nbsp;·&nbsp;
+    <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a><br><br>
+    <span style="font-size:10px;opacity:0.38;">Kein therapeutisches Angebot. Keine Heilbehandlung. Keine Diagnosen.</span>
+  </p>
+</footer>
+
+<script>
+const slogansDE = [
+  "KOMMST DU NICHT MEHR WEITER IM LEBEN?",
+  "BIST DU IN EINE SCHIEFLAGE GERATEN?",
+  "MÖCHTEST DU ENDLICH WEITERKOMMEN?",
+  "STECKST DU GERADE FEST?",
+  "LÄUFT ES NICHT SO RUND?",
+  "AUF DER STELLE TRETEN?",
+  "BRAUCHST DU EINEN NEUSTART?",
+  "FÜHLST DU DICH VERLOREN?",
+  "IST DER ALLTAG ZUR LAST GEWORDEN?",
+  "WEISST DU NICHT, WO ES LANGGEHT?",
+  "HAT DAS LEBEN SEINE RICHTUNG VERLOREN?",
+  "BRAUCHST DU JEMANDEN, DER ZUHÖRT?",
+  "WILLST DU ENDLICH ETWAS VERÄNDERN?",
+  "FÜHLST DU DICH ALLEIN MIT DEINEN GEDANKEN?",
+  "IST DEIN KOPF GERADE VOLL?",
+  "SUCHST DU NACH ORIENTIERUNG?",
+  "BRAUCHST DU EINEN KICK-START?",
+  "HAT DIE MOTIVATION DICH VERLASSEN?",
+  "IMMER WIEDER GEGEN DIESELBE WAND?",
+  "WILLST DU DICH WIEDER LEICHT FÜHLEN?",
+  "TRAUST DU DIR SELBST NICHT MEHR?",
+  "IST DA DIESES GEFÜHL, DASS ETWAS NICHT STIMMT?"
+];
+const slogansEN = [
+  "FEELING STUCK IN LIFE?",
+  "THINGS NOT GOING AS PLANNED?",
+  "NEED A FRESH START?",
+  "LOST YOUR SENSE OF DIRECTION?",
+  "RUNNING IN CIRCLES?",
+  "NEED SOMEONE TO TALK TO?",
+  "TREADING WATER?",
+  "WANT TO FINALLY MOVE FORWARD?",
+  "IS YOUR HEAD FULL AND HEAVY?",
+  "LOOKING FOR CLARITY?",
+  "NEED A KICK-START?",
+  "FEEL LIKE YOU'VE LOST YOURSELF?",
+  "MOTIVATION GONE MISSING?",
+  "TIRED OF HITTING THE SAME WALL?",
+  "WANT TO FEEL LIGHT AGAIN?",
+  "LOST TRUST IN YOURSELF?",
+  "FEEL ALONE WITH YOUR THOUGHTS?",
+  "IS EVERYDAY LIFE WEIGHING YOU DOWN?",
+  "READY FOR SOMETHING TO CHANGE?"
+];
+
+let idx = 0;
+let lang = 'de';
+
+function rotate() {
+  const el = document.getElementById('slogan-text');
+  const arr = lang === 'de' ? slogansDE : slogansEN;
+  el.style.opacity = '0';
+  setTimeout(function() {
+    idx = (idx + 1) % arr.length;
+    el.textContent = arr[idx];
+    el.style.opacity = '1';
+  }, 500);
+}
+
+function setLang(l) {
+  lang = l;
+  document.body.className = 'lang-' + l;
+  document.getElementById('btn-de').classList.toggle('active', l==='de');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.querySelectorAll('.de').forEach(function(el) {
+    el.style.display = l === 'de' ? '' : 'none';
+  });
+  document.querySelectorAll('.en').forEach(function(el) {
+    el.style.display = l === 'en' ? '' : 'none';
+  });
+  var el = document.getElementById('slogan-text');
+  if (el) el.textContent = (l==='de' ? slogansDE : slogansEN)[idx];
+}
+
+function handleSubmit(e, l) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('.submit-btn');
+  var formData = new FormData(form);
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(function() {
+    btn.textContent = l==='de' ? 'Gesendet ✓' : 'Sent ✓';
+    btn.style.borderColor = 'rgba(140,255,140,0.6)';
+    btn.style.color = 'rgba(170,255,170,0.9)';
+    form.reset();
+    setTimeout(function() {
+      btn.textContent = l==='de' ? 'Senden ▶' : 'Send ▶';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 3000);
+  })
+  .catch(function(err) { console.error(err); });
+}
+
+// Load figure
+var figImg = new Image();
+figImg.onload = function() {
+  var L = document.getElementById('canvas-left');
+  var R = document.getElementById('canvas-right');
+  if (!L || !R) return;
+  setInterval(function() {
+    [L, R].forEach(function(c, i) {
+      var ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, 150, 240);
+      if (i === 1) { ctx.save(); ctx.translate(150, 0); ctx.scale(-1, 1); }
+      ctx.drawImage(figImg, 0, 0, 150, 240);
+      if (i === 1) ctx.restore();
+    });
+  }, 80);
+};
+figImg.src = 'man.gif';
+
+// Init
+window.addEventListener('DOMContentLoaded', function() {
+  setLang('de');
+  setInterval(rotate, 3200);
+});
+</script>
+</body>
+</html>
