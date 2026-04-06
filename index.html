@@ -85,10 +85,10 @@ body.lang-en .en.g{display:grid}
 
 <section id="hero">
   <div class="fig-wrap left">
-    <canvas id="canvas-left" width="150" height="240"></canvas>
+    <img src="man.gif" style="width:clamp(110px,15vw,200px);display:block;mix-blend-mode:screen;">
   </div>
   <div class="fig-wrap right">
-    <canvas id="canvas-right" width="150" height="240" style="transform:scaleX(-1)"></canvas>
+    <img src="man.gif" style="width:clamp(110px,15vw,200px);display:block;mix-blend-mode:screen;transform:scaleX(-1);">
   </div>
   <div id="center-text">
     <div id="brand-name">dritterstockrechts</div>
@@ -198,7 +198,7 @@ body.lang-en .en.g{display:grid}
       <div class="body-text impressum-box">
         <p><strong>Angaben gemäß § 5 TMG</strong></p>
         <p>Konstantin Kuse<br>dritterstockrechts<br><span style="color:rgba(180,200,255,0.5);font-size:13px;">[Adresse folgt]</span></p>
-        <p><strong>Kontakt</strong><br>E-Mail: <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a></p>
+        <p><strong>Kontakt</strong><br>E-Mail: <a href="/cdn-cgi/l/email-protection#e09485818da08492899494859293948f838b928583889493ce838f8d"><span class="__cf_email__" data-cfemail="7f0b1a1e123f1b0d160b0b1a0d0c0b101c140d1a1c170b0c511c1012">[email&#160;protected]</span></a></p>
         <p><strong>Hinweis</strong><br>Coaching und Gesprächsbegleitung. Kein Heilberuf. Keine Diagnose oder Behandlung psychischer Erkrankungen.</p>
         <p><strong>Streitschlichtung</strong><br>EU-Plattform: <a href="https://ec.europa.eu/consumers/odr" target="_blank">ec.europa.eu/consumers/odr</a>. Wir nehmen nicht teil.</p>
       </div>
@@ -208,7 +208,7 @@ body.lang-en .en.g{display:grid}
       <div class="body-text impressum-box">
         <p><strong>Information pursuant to § 5 TMG</strong></p>
         <p>Konstantin Kuse<br>dritterstockrechts<br><span style="color:rgba(180,200,255,0.5);font-size:13px;">[Address to follow]</span></p>
-        <p><strong>Contact</strong><br>Email: <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a></p>
+        <p><strong>Contact</strong><br>Email: <a href="/cdn-cgi/l/email-protection#e99d8c8884a98d9b809d9d8c9b9a9d868a829b8c8a819d9ac78a8684"><span class="__cf_email__" data-cfemail="285c4d4945684c5a415c5c4d5a5b5c474b435a4d4b405c5b064b4745">[email&#160;protected]</span></a></p>
         <p><strong>Note</strong><br>Coaching and conversational guidance. Not a licensed health profession. No diagnosis or treatment.</p>
       </div>
     </div>
@@ -219,12 +219,12 @@ body.lang-en .en.g{display:grid}
   <p>
     dritterstockrechts &nbsp;·&nbsp; Berlin<br>
     <a href="#impressum">Impressum</a> &nbsp;·&nbsp;
-    <a href="mailto:team@dritterstockrechts.com">team@dritterstockrechts.com</a><br><br>
+    <a href="/cdn-cgi/l/email-protection#097d6c6864496d7b607d7d6c7b7a7d666a627b6c6a617d7a276a6664"><span class="__cf_email__" data-cfemail="7b0f1e1a163b1f09120f0f1e09080f141810091e18130f0855181416">[email&#160;protected]</span></a><br><br>
     <span style="font-size:10px;opacity:0.38;">Kein therapeutisches Angebot. Keine Heilbehandlung. Keine Diagnosen.</span>
   </p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const slogansDE = [
   "KOMMST DU NICHT MEHR WEITER IM LEBEN?",
   "BIST DU IN EINE SCHIEFLAGE GERATEN?",
@@ -327,26 +327,4 @@ function handleSubmit(e, l) {
 // Load figure
 var figImg = new Image();
 figImg.onload = function() {
-  var L = document.getElementById('canvas-left');
-  var R = document.getElementById('canvas-right');
-  if (!L || !R) return;
-  setInterval(function() {
-    [L, R].forEach(function(c, i) {
-      var ctx = c.getContext('2d');
-      ctx.clearRect(0, 0, 150, 240);
-      if (i === 1) { ctx.save(); ctx.translate(150, 0); ctx.scale(-1, 1); }
-      ctx.drawImage(figImg, 0, 0, 150, 240);
-      if (i === 1) ctx.restore();
-    });
-  }, 80);
-};
-figImg.src = 'man.gif';
-
-// Init
-window.addEventListener('DOMContentLoaded', function() {
-  setLang('de');
-  setInterval(rotate, 3200);
-});
-</script>
-</body>
-</html>
+  var L = document.getElementById('canvas-
