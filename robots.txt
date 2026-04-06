@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /#impressum
+
+# Block indexing of personal name
+X-Robots-Tag: nosnippet
